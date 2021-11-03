@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WyServiceCashierGroup;
 import com.john.spring.dao.WyServiceCashierGroupMapper;
-import com.john.spring.service.WyServiceCashierGroupService;
+import com.john.spring.service.base.WyServiceCashierGroupService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

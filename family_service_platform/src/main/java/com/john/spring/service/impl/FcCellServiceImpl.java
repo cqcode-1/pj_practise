@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.FcCell;
 import com.john.spring.dao.FcCellMapper;
-import com.john.spring.service.FcCellService;
+import com.john.spring.service.base.FcCellService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

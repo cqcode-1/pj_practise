@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblSendLog;
 import com.john.spring.dao.TblSendLogMapper;
-import com.john.spring.service.TblSendLogService;
+import com.john.spring.service.base.TblSendLogService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WyVisitManage;
 import com.john.spring.dao.WyVisitManageMapper;
-import com.john.spring.service.WyVisitManageService;
+import com.john.spring.service.base.WyVisitManageService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.FyMoneySetting;
 import com.john.spring.dao.FyMoneySettingMapper;
-import com.john.spring.service.FyMoneySettingService;
+import com.john.spring.service.base.FyMoneySettingService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

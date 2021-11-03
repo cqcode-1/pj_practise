@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.FyPreReceive;
 import com.john.spring.dao.FyPreReceiveMapper;
-import com.john.spring.service.FyPreReceiveService;
+import com.john.spring.service.base.FyPreReceiveService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

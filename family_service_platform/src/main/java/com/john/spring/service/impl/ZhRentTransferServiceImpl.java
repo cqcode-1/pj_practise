@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.ZhRentTransfer;
 import com.john.spring.dao.ZhRentTransferMapper;
-import com.john.spring.service.ZhRentTransferService;
+import com.john.spring.service.base.ZhRentTransferService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

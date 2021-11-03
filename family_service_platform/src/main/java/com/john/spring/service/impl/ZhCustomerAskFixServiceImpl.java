@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.ZhCustomerAskFix;
 import com.john.spring.dao.ZhCustomerAskFixMapper;
-import com.john.spring.service.ZhCustomerAskFixService;
+import com.john.spring.service.base.ZhCustomerAskFixService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

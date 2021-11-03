@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblQuick;
 import com.john.spring.dao.TblQuickMapper;
-import com.john.spring.service.TblQuickService;
+import com.john.spring.service.base.TblQuickService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

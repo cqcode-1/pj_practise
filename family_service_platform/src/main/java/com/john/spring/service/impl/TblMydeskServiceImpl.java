@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblMydesk;
 import com.john.spring.dao.TblMydeskMapper;
-import com.john.spring.service.TblMydeskService;
+import com.john.spring.service.base.TblMydeskService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblDeptkey;
 import com.john.spring.dao.TblDeptkeyMapper;
-import com.john.spring.service.TblDeptkeyService;
+import com.john.spring.service.base.TblDeptkeyService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

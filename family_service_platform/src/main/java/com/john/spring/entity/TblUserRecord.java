@@ -41,7 +41,7 @@ public class TblUserRecord implements Serializable {
     /**
      * 岗位角色
      */
-    private Integer userRole;
+    private TblRole userRole;
 
     /**
      * 用户性别
@@ -51,7 +51,7 @@ public class TblUserRecord implements Serializable {
     /**
      * 所属部门
      */
-    private Integer userDept;
+    private TblDept userDept;
 
     /**
      * 职位
@@ -126,7 +126,7 @@ public class TblUserRecord implements Serializable {
     /**
      * 所属公司
      */
-    private String company;
+    private TblCompany company;
 
     /**
      * 是否部门管理者
@@ -181,13 +181,6 @@ public class TblUserRecord implements Serializable {
         this.userType = userType;
     }
 
-    public Integer getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(Integer userRole) {
-        this.userRole = userRole;
-    }
 
     public String getUserGender() {
         return userGender;
@@ -197,13 +190,6 @@ public class TblUserRecord implements Serializable {
         this.userGender = userGender;
     }
 
-    public Integer getUserDept() {
-        return userDept;
-    }
-
-    public void setUserDept(Integer userDept) {
-        this.userDept = userDept;
-    }
 
     public Integer getUserJob() {
         return userJob;
@@ -317,13 +303,6 @@ public class TblUserRecord implements Serializable {
         this.remark = remark;
     }
 
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
 
     public String getIsDeptAdmin() {
         return isDeptAdmin;
@@ -357,35 +336,61 @@ public class TblUserRecord implements Serializable {
         this.createDate = createDate;
     }
 
+
+    public TblRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(TblRole userRole) {
+        this.userRole = userRole;
+    }
+
+    public TblDept getUserDept() {
+        return userDept;
+    }
+
+    public void setUserDept(TblDept userDept) {
+        this.userDept = userDept;
+    }
+
+    public TblCompany getCompany() {
+        return company;
+    }
+
+    public void setCompany(TblCompany company) {
+        this.company = company;
+    }
+
+
     @Override
     public String toString() {
         return "TblUserRecord{" +
-        "id=" + id +
-        ", userName=" + userName +
-        ", userPassword=" + userPassword +
-        ", userType=" + userType +
-        ", userRole=" + userRole +
-        ", userGender=" + userGender +
-        ", userDept=" + userDept +
-        ", userJob=" + userJob +
-        ", userStatus=" + userStatus +
-        ", officePhone=" + officePhone +
-        ", innerPhone=" + innerPhone +
-        ", movePhone=" + movePhone +
-        ", email=" + email +
-        ", isSendMsg=" + isSendMsg +
-        ", startDate=" + startDate +
-        ", stopDate=" + stopDate +
-        ", birthday=" + birthday +
-        ", ipRule=" + ipRule +
-        ", userHiredate=" + userHiredate +
-        ", isSendWchat=" + isSendWchat +
-        ", remark=" + remark +
-        ", company=" + company +
-        ", isDeptAdmin=" + isDeptAdmin +
-        ", lastLoginDate=" + lastLoginDate +
-        ", createPerson=" + createPerson +
-        ", createDate=" + createDate +
-        "}";
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userType='" + userType + '\'' +
+                ", userRole=" + userRole +
+                ", userGender='" + userGender + '\'' +
+                ", userDept=" + userDept +
+                ", userJob=" + userJob +
+                ", userStatus='" + userStatus + '\'' +
+                ", officePhone='" + officePhone + '\'' +
+                ", innerPhone='" + innerPhone + '\'' +
+                ", movePhone='" + movePhone + '\'' +
+                ", email='" + email + '\'' +
+                ", isSendMsg='" + isSendMsg + '\'' +
+                ", startDate=" + startDate +
+                ", stopDate=" + stopDate +
+                ", birthday=" + birthday +
+                ", ipRule='" + ipRule + '\'' +
+                ", userHiredate=" + userHiredate +
+                ", isSendWchat='" + isSendWchat + '\'' +
+                ", remark='" + remark + '\'' +
+                ", company=" + company +
+                ", isDeptAdmin='" + isDeptAdmin + '\'' +
+                ", lastLoginDate=" + lastLoginDate +
+                ", createPerson='" + createPerson + '\'' +
+                ", createDate=" + createDate +
+                '}';
     }
 }

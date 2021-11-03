@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblMainMenu;
 import com.john.spring.dao.TblMainMenuMapper;
-import com.john.spring.service.TblMainMenuService;
+import com.john.spring.service.base.TblMainMenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

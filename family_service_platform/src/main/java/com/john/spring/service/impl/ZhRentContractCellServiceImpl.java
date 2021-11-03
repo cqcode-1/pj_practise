@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.ZhRentContractCell;
 import com.john.spring.dao.ZhRentContractCellMapper;
-import com.john.spring.service.ZhRentContractCellService;
+import com.john.spring.service.base.ZhRentContractCellService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

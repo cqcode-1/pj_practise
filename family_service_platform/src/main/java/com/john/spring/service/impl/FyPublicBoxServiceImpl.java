@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.FyPublicBox;
 import com.john.spring.dao.FyPublicBoxMapper;
-import com.john.spring.service.FyPublicBoxService;
+import com.john.spring.service.base.FyPublicBoxService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

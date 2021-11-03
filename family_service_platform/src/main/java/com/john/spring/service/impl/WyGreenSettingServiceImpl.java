@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WyGreenSetting;
 import com.john.spring.dao.WyGreenSettingMapper;
-import com.john.spring.service.WyGreenSettingService;
+import com.john.spring.service.base.WyGreenSettingService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

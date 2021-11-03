@@ -14,7 +14,7 @@
   "dependencies": {
     "@antv/data-set": "^0.10.2",
     "ant-design-vue": "1.5.0-rc.6",
-    "axios": "^0.19.0",
+    "axios": "^0.24.0",
     "core-js": "^3.1.2",
     "enquire.js": "^2.1.6",
     "lodash.clonedeep": "^4.5.0",
@@ -24,6 +24,7 @@
     "mockjs2": "1.0.8",
     "moment": "^2.24.0",
     "nprogress": "^0.2.0",
+    "qs": "^6.10.1",
     "reqwest": "^2.0.5",
     "viser-vue": "^2.4.6",
     "vue": "^2.6.10",
@@ -40,7 +41,7 @@
   "devDependencies": {
     "@ant-design/colors": "^3.2.1",
     "@vue/cli-plugin-babel": "^4.0.4",
-    "@vue/cli-plugin-eslint": "^4.0.4",
+    "@vue/cli-plugin-eslint": "^4.5.15",
     "@vue/cli-plugin-router": "^4.0.4",
     "@vue/cli-plugin-unit-jest": "^4.0.4",
     "@vue/cli-plugin-vuex": "^4.0.4",

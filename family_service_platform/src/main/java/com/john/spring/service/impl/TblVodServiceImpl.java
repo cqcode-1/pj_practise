@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblVod;
 import com.john.spring.dao.TblVodMapper;
-import com.john.spring.service.TblVodService;
+import com.john.spring.service.base.TblVodService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

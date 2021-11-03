@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.FcBuilding;
 import com.john.spring.dao.FcBuildingMapper;
-import com.john.spring.service.FcBuildingService;
+import com.john.spring.service.base.FcBuildingService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

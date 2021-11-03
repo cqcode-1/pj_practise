@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WyAskMsgRemindLog;
 import com.john.spring.dao.WyAskMsgRemindLogMapper;
-import com.john.spring.service.WyAskMsgRemindLogService;
+import com.john.spring.service.base.WyAskMsgRemindLogService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblEnvirSetting;
 import com.john.spring.dao.TblEnvirSettingMapper;
-import com.john.spring.service.TblEnvirSettingService;
+import com.john.spring.service.base.TblEnvirSettingService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

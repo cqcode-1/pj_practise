@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblMessageCharge;
 import com.john.spring.dao.TblMessageChargeMapper;
-import com.john.spring.service.TblMessageChargeService;
+import com.john.spring.service.base.TblMessageChargeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblGroupRecord;
 import com.john.spring.dao.TblGroupRecordMapper;
-import com.john.spring.service.TblGroupRecordService;
+import com.john.spring.service.base.TblGroupRecordService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

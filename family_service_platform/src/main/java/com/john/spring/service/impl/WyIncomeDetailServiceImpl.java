@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WyIncomeDetail;
 import com.john.spring.dao.WyIncomeDetailMapper;
-import com.john.spring.service.WyIncomeDetailService;
+import com.john.spring.service.base.WyIncomeDetailService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

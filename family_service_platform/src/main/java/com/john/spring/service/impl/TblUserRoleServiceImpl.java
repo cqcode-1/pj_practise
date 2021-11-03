@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblUserRole;
 import com.john.spring.dao.TblUserRoleMapper;
-import com.john.spring.service.TblUserRoleService;
+import com.john.spring.service.base.TblUserRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

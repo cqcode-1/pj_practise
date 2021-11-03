@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WyTakeoverDataDetail;
 import com.john.spring.dao.WyTakeoverDataDetailMapper;
-import com.john.spring.service.WyTakeoverDataDetailService;
+import com.john.spring.service.base.WyTakeoverDataDetailService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

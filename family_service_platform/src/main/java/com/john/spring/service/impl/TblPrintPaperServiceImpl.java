@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblPrintPaper;
 import com.john.spring.dao.TblPrintPaperMapper;
-import com.john.spring.service.TblPrintPaperService;
+import com.john.spring.service.base.TblPrintPaperService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

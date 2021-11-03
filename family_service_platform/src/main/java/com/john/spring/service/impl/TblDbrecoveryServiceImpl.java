@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblDbrecovery;
 import com.john.spring.dao.TblDbrecoveryMapper;
-import com.john.spring.service.TblDbrecoveryService;
+import com.john.spring.service.base.TblDbrecoveryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

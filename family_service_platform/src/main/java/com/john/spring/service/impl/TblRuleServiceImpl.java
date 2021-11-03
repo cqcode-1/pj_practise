@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblRule;
 import com.john.spring.dao.TblRuleMapper;
-import com.john.spring.service.TblRuleService;
+import com.john.spring.service.base.TblRuleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

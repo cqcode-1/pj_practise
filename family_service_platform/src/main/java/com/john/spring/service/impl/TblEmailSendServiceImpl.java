@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblEmailSend;
 import com.john.spring.dao.TblEmailSendMapper;
-import com.john.spring.service.TblEmailSendService;
+import com.john.spring.service.base.TblEmailSendService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

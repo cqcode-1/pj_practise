@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WyCarManage;
 import com.john.spring.dao.WyCarManageMapper;
-import com.john.spring.service.WyCarManageService;
+import com.john.spring.service.base.WyCarManageService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

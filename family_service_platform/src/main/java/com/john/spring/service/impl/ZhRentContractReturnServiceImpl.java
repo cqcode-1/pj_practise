@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.ZhRentContractReturn;
 import com.john.spring.dao.ZhRentContractReturnMapper;
-import com.john.spring.service.ZhRentContractReturnService;
+import com.john.spring.service.base.ZhRentContractReturnService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

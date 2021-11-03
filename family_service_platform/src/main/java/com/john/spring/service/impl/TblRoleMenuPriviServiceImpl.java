@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblRoleMenuPrivi;
 import com.john.spring.dao.TblRoleMenuPriviMapper;
-import com.john.spring.service.TblRoleMenuPriviService;
+import com.john.spring.service.base.TblRoleMenuPriviService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

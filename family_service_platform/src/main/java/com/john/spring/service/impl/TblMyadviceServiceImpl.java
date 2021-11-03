@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblMyadvice;
 import com.john.spring.dao.TblMyadviceMapper;
-import com.john.spring.service.TblMyadviceService;
+import com.john.spring.service.base.TblMyadviceService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

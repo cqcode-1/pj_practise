@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.ZhCsHandleSpeed;
 import com.john.spring.dao.ZhCsHandleSpeedMapper;
-import com.john.spring.service.ZhCsHandleSpeedService;
+import com.john.spring.service.base.ZhCsHandleSpeedService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

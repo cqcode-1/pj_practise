@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblNetdiskUrl;
 import com.john.spring.dao.TblNetdiskUrlMapper;
-import com.john.spring.service.TblNetdiskUrlService;
+import com.john.spring.service.base.TblNetdiskUrlService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

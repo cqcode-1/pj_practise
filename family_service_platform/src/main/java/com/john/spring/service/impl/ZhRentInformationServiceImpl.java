@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.ZhRentInformation;
 import com.john.spring.dao.ZhRentInformationMapper;
-import com.john.spring.service.ZhRentInformationService;
+import com.john.spring.service.base.ZhRentInformationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

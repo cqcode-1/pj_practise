@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblEmployeeContactCategory;
 import com.john.spring.dao.TblEmployeeContactCategoryMapper;
-import com.john.spring.service.TblEmployeeContactCategoryService;
+import com.john.spring.service.base.TblEmployeeContactCategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

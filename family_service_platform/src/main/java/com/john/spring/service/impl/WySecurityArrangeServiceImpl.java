@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WySecurityArrange;
 import com.john.spring.dao.WySecurityArrangeMapper;
-import com.john.spring.service.WySecurityArrangeService;
+import com.john.spring.service.base.WySecurityArrangeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

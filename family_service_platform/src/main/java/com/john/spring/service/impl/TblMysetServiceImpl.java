@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblMyset;
 import com.john.spring.dao.TblMysetMapper;
-import com.john.spring.service.TblMysetService;
+import com.john.spring.service.base.TblMysetService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

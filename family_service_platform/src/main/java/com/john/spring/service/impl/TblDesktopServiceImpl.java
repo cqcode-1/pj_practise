@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblDesktop;
 import com.john.spring.dao.TblDesktopMapper;
-import com.john.spring.service.TblDesktopService;
+import com.john.spring.service.base.TblDesktopService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

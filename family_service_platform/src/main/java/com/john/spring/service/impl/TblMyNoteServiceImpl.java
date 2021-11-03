@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblMyNote;
 import com.john.spring.dao.TblMyNoteMapper;
-import com.john.spring.service.TblMyNoteService;
+import com.john.spring.service.base.TblMyNoteService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

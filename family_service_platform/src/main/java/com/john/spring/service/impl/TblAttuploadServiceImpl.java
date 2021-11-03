@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblAttupload;
 import com.john.spring.dao.TblAttuploadMapper;
-import com.john.spring.service.TblAttuploadService;
+import com.john.spring.service.base.TblAttuploadService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

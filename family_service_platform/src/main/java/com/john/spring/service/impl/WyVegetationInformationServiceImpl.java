@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WyVegetationInformation;
 import com.john.spring.dao.WyVegetationInformationMapper;
-import com.john.spring.service.WyVegetationInformationService;
+import com.john.spring.service.base.WyVegetationInformationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

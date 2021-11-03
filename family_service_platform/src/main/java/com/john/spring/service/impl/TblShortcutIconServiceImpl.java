@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblShortcutIcon;
 import com.john.spring.dao.TblShortcutIconMapper;
-import com.john.spring.service.TblShortcutIconService;
+import com.john.spring.service.base.TblShortcutIconService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

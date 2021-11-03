@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WyEstateOutDetail;
 import com.john.spring.dao.WyEstateOutDetailMapper;
-import com.john.spring.service.WyEstateOutDetailService;
+import com.john.spring.service.base.WyEstateOutDetailService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

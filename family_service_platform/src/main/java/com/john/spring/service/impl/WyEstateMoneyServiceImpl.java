@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WyEstateMoney;
 import com.john.spring.dao.WyEstateMoneyMapper;
-import com.john.spring.service.WyEstateMoneyService;
+import com.john.spring.service.base.WyEstateMoneyService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

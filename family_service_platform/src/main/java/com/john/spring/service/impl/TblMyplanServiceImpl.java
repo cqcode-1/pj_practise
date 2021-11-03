@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblMyplan;
 import com.john.spring.dao.TblMyplanMapper;
-import com.john.spring.service.TblMyplanService;
+import com.john.spring.service.base.TblMyplanService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

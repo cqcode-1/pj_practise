@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.FyReceiptSub;
 import com.john.spring.dao.FyReceiptSubMapper;
-import com.john.spring.service.FyReceiptSubService;
+import com.john.spring.service.base.FyReceiptSubService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

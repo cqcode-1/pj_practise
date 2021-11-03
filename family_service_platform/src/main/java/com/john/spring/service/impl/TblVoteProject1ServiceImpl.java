@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblVoteProject1;
 import com.john.spring.dao.TblVoteProject1Mapper;
-import com.john.spring.service.TblVoteProject1Service;
+import com.john.spring.service.base.TblVoteProject1Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

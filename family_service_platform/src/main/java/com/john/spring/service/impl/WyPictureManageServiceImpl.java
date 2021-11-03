@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.WyPictureManage;
 import com.john.spring.dao.WyPictureManageMapper;
-import com.john.spring.service.WyPictureManageService;
+import com.john.spring.service.base.WyPictureManageService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

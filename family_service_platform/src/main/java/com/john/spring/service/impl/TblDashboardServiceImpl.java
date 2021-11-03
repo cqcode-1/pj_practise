@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.TblDashboard;
 import com.john.spring.dao.TblDashboardMapper;
-import com.john.spring.service.TblDashboardService;
+import com.john.spring.service.base.TblDashboardService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

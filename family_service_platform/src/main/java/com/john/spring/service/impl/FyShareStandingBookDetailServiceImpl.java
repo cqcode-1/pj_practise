@@ -2,7 +2,7 @@ package com.john.spring.service.impl;
 
 import com.john.spring.entity.FyShareStandingBookDetail;
 import com.john.spring.dao.FyShareStandingBookDetailMapper;
-import com.john.spring.service.FyShareStandingBookDetailService;
+import com.john.spring.service.base.FyShareStandingBookDetailService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
