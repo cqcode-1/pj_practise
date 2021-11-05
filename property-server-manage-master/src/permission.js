@@ -56,6 +56,7 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
+    console.log('no token--', whiteList.includes(to.name))
     if (whiteList.includes(to.name)) {
       // 在免登录白名单，直接进入
       next()

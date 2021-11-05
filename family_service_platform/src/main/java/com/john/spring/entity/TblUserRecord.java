@@ -148,6 +148,11 @@ public class TblUserRecord implements Serializable {
      */
     private LocalDateTime createDate;
 
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
 
     public Integer getId() {
         return id;
@@ -361,6 +366,9 @@ public class TblUserRecord implements Serializable {
         this.company = company;
     }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     @Override
     public String toString() {
@@ -393,4 +401,5 @@ public class TblUserRecord implements Serializable {
                 ", createDate=" + createDate +
                 '}';
     }
+
 }

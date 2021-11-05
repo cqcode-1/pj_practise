@@ -64,18 +64,19 @@
         <!--需要修改TblUserRecord 这三个属性的类型为javaType中指定的类-->
         <association property="userRole" javaType="com.john.spring.entity.TblRole">
             <result column="role_name" property="roleName"/>
+            <result column="role_privileges" property="rolePrivileges"/>
         </association>
         <association property="company" javaType="com.john.spring.entity.TblCompany">
             <result column="company_full_name" property="companyFullName"/>
         </association>
         <association property="userDept" javaType="com.john.spring.entity.TblDept">
-            <result column="dept_name" property="deptName"/>
+            <result column="dept_privileges" property="deptPrivileges"/>
         </association>
     </resultMap>
 
     <select id="selectUser" resultMap="tabUserRecord" >
         /*关联查询语句，可以在navicat中去测试sql语句是否正确*/
-        select a.*,b.dept_name, c.role_name, d.company_full_name from tbl_user_record a
+        select a.*,b.dept_privileges, c.role_privileges, d.company_full_name from tbl_user_record a
         left join tbl_dept b on a.user_dept = b.id
         left join tbl_role c on a.user_role = c.id
         left join tbl_company d on a.company = d.id

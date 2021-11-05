@@ -39,6 +39,7 @@ const user = {
                 login(userInfo)
                     .then(response => {
                         const result = response.result
+                        console.log('result=', result)
                         Vue.ls.set(ACCESS_TOKEN, result.token, 7 * 24 * 60 * 60 * 1000)
                         commit('SET_TOKEN', result.token)
                         resolve()
@@ -51,12 +52,14 @@ const user = {
 
         // 获取用户信息
         GetInfo({ commit }) {
+            console.log('获取用户信息')
             return new Promise((resolve, reject) => {
                 getInfo()
                     .then(response => {
                         const result = response.result
-
+                        console.log('result: ', result)
                         if (result.role && result.role.permissions.length > 0) {
+                            console.log('has role')
                             const role = result.role
                             role.permissions = result.role.permissions
                             role.permissions.map(per => {
