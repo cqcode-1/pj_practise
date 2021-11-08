@@ -13,7 +13,7 @@ import { axios } from '@/utils/request'
  * @returns {*}
  */
 export function login(parameter) {
-    console.log('login ---', parameter)
+    console.log('login ', parameter)
     return axios({
         url: api.Login,
         method: 'post',

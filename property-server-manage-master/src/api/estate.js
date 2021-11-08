@@ -8,12 +8,18 @@ export function queryCompany() {
 }
 
 export function insertEstate(param) {
+    console.log('param', param)
     return axios({
         url: '/estate/insertEstate',
-        method: 'psot',
-        data: param,
-        headers: {
-            'Content-Type': 'application/json;charset=UTF-8'
-        }
+        method: 'post',
+        data: param
+    })
+}
+
+export function insertEstate1() {
+    console.log()
+    return axios({
+        url: '/estate/insertEstate',
+        method: 'get'
     })
 }

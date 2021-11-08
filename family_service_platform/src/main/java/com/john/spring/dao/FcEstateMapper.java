@@ -2,6 +2,7 @@ package com.john.spring.dao;
 
 import com.john.spring.entity.FcEstate;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -11,6 +12,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author john
  * @since 2021-11-01
  */
+@Component
 public interface FcEstateMapper extends BaseMapper<FcEstate> {
 
+
+    Integer insertOne(FcEstate fcEstate);
 }

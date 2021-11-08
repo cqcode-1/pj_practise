@@ -10,8 +10,10 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #配置mybatis
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
+#如果pom.xml中引用的是mybatis-plus，这里 标签使用mybatis，
+#如果是mybatis-plus-boot-stater,这里一定要使用mybatis-plus，否则在调用baseMapper中的方法会找不到。
+mybatis-plus:
+  mapper-locations: classpath:com/john/spring/mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
 
@@ -21,4 +23,5 @@ logging:
     com:
       john:
         spring:
-          debug
+          mapper:
+            debug

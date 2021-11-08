@@ -3,6 +3,9 @@ package com.john.spring.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 
 /**
