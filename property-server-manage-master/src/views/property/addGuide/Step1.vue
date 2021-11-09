@@ -194,7 +194,7 @@ export default {
                         if (res.message === '1') {
                             setTimeout(() => {
                                 this.$notification.success({
-                                    message: '成功',
+                                    message: '插入房产成功',
                                     description: res.result
                                 })
                             }, 1000)

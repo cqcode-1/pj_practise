@@ -6,9 +6,12 @@
       <span style="color: blue;font-weight: 700;">{{ this.$store.state.oneStep.buildingNumber }}</span>
       单元数量:
       <!-- <a-form-model-item label="单元数量：" prop="region" class="units" :labelCol="labelCol" :wrapperCol="wrapperCol"> -->
-      <a-select v-model="form2.region">
+      <a-select v-model="form2.region" @change="change()">
         <a-select-option value="1">1</a-select-option>
         <a-select-option value="2">2</a-select-option>
+        <a-select-option value="3">3</a-select-option>
+        <a-select-option value="4">4</a-select-option>
+        <a-select-option value="5">5</a-select-option>
       </a-select>
       <!-- </a-form-model-item> -->
     </a-row>
@@ -16,15 +19,15 @@
       <a-table :columns="columns" :dataSource="data" bordered align="center">
         <template
           v-for="col in [
-            'housecount',
-            'housename',
+            'buildingCode',
+            'buildingName',
             'unitcount',
-            'cappeddate',
-            'completeddate',
-            'presalelicense',
-            'buildingpermit',
+            'overRoofDate',
+            'finishDate',
+            'salePermissionId',
+            'buildPermissionId',
             'constructionarea',
-            'usagearea',
+            'usedArea',
             'remark'
           ]"
           :slot="col"
@@ -62,21 +65,23 @@
 </template>
 
 <script>
-import moment from 'moment'
+import { selectBuilding, updateBuilding } from '@/api/estate'
+const QS = require('qs')
+
 const columns = [
     {
         align: 'center',
         title: '楼宇编码',
-        dataIndex: 'housecount',
+        dataIndex: 'buildingCode',
         width: '6%',
-        scopedSlots: { customRender: 'housecount' }
+        scopedSlots: { customRender: 'buildingCode' }
     },
     {
         align: 'center',
         title: '楼宇名称',
-        dataIndex: 'housename',
+        dataIndex: 'buildingName',
         width: '15%',
-        scopedSlots: { customRender: 'housename' }
+        scopedSlots: { customRender: 'buildingName' }
     },
     {
         align: 'center',
@@ -88,30 +93,30 @@ const columns = [
     {
         align: 'center',
         title: '封顶日期',
-        dataIndex: 'cappeddate',
+        dataIndex: 'overRoofDate',
         width: '7%',
-        scopedSlots: { customRender: 'cappeddate' }
+        scopedSlots: { customRender: 'overRoofDate' }
     },
     {
         align: 'center',
         title: '竣工日期',
-        dataIndex: 'completeddate',
+        dataIndex: 'finishDate',
         width: '7%',
-        scopedSlots: { customRender: 'completeddate' }
+        scopedSlots: { customRender: 'finishDate' }
     },
     {
         align: 'center',
         title: '预售许可证',
-        dataIndex: 'presalelicense',
+        dataIndex: 'salePermissionId',
         width: '7%',
-        scopedSlots: { customRender: 'presalelicense' }
+        scopedSlots: { customRender: 'salePermissionId' }
     },
     {
         align: 'center',
         title: '建筑许可证',
-        dataIndex: 'buildingpermit',
+        dataIndex: 'buildPermissionId',
         width: '7%',
-        scopedSlots: { customRender: 'buildingpermit' }
+        scopedSlots: { customRender: 'buildPermissionId' }
     },
     {
         align: 'center',
@@ -123,9 +128,9 @@ const columns = [
     {
         align: 'center',
         title: '使用面积',
-        dataIndex: 'usagearea',
+        dataIndex: 'usedArea',
         width: '6%',
-        scopedSlots: { customRender: 'usagearea' }
+        scopedSlots: { customRender: 'usedArea' }
     },
     {
         align: 'center',
@@ -144,25 +149,24 @@ const columns = [
 ]
 
 const data = []
-for (let i = 0; i < 10; i++) {
-    data.push({
-        key: i.toString(),
-        housecount: `B-${i + 1}`,
-        housename: `第${i + 1}栋`,
-        unitcount: `12`,
-        cappeddate: moment().format('YYYY-MM-DD'),
-        completeddate: moment().format('YYYY-MM-DD'),
-        presalelicense: '',
-        buildingpermit: '',
-        constructionarea: '',
-        usagearea: '',
-        remark: ''
-    })
-}
+// for (let i = 0; i < 10; i++) {
+//     data.push({
+//         key: i.toString(),
+//         buildingCode: `B-${i + 1}`,
+//         buildingName: `第${i + 1}栋`,
+//         unitcount: `12`,
+//         overRoofDate: moment().format('YYYY-MM-DD'),
+//         finishDate: moment().format('YYYY-MM-DD'),
+//         salePermissionId: '',
+//         buildPermissionId: '',
+//         constructionarea: '',
+//         usedArea: '',
+//         remark: ''
+//     })
+// }
 export default {
     name: 'Step2',
     data() {
-        this.cacheData = data.map(item => ({ ...item }))
         return {
             labelCol: { span: 2 },
             wrapperCol: { span: 1 },
@@ -185,7 +189,60 @@ export default {
             // timer: 0
         }
     },
+    created() {
+      // 插入楼宇信息
+      const sendData = {
+        buildingNumber: this.$store.state.oneStep.buildingNumber,
+        estateCode: this.$store.state.oneStep.estateCode
+      }
+      const parameter = QS.stringify(sendData)
+      selectBuilding(parameter).then(res => {
+        const result = res.result
+        if (res.message === '1') {
+          for (let i = 0; i < result.length; i++) {
+            const building = result[i]
+            data.push({
+              key: building.id,
+              buildingCode: building.buildingCode,
+              buildingName: building.buildingName,
+              unitcount: building.unitcount,
+              overRoofDate: building.overRoofDate,
+              finishDate: building.finishDate,
+              salePermissionId: building.salePermissionId,
+              buildPermissionId: building.buildPermissionId,
+              constructionarea: building.constructionarea,
+              usedArea: building.usedArea,
+              remark: building.remark
+            })
+          }
+          this.cacheData = data.map(item => ({ ...item }))
+          setTimeout(
+            this.$notification.success({
+            message: '查询房产成功'
+          }), 1000)
+        } else {
+          setTimeout(
+            this.$notification.error({
+            message: '查询房产失败'
+          }), 1000)
+        }
+        console.log(res.result)
+      }).catch((err) => {
+        setTimeout(
+          this.$notification.error({
+            message: err.message
+          })
+        )
+        console.log('error')
+      })
+    },
     methods: {
+        change() {
+          const count = this.form2.region
+          for (let i = 0; i < this.data.length; i++) {
+            this.data[i].unitcount = count
+          }
+        },
         nextStep() {
             this.$emit('nextStep')
         },
@@ -222,6 +279,26 @@ export default {
                 Object.assign(targetCache, target)
                 this.cacheData = newCacheData
             }
+            target.id = key
+            target.estateCode = this.$store.state.oneStep.estateCode
+            const param = QS.stringify(target)
+            console.log('param: ', param)
+            updateBuilding(param).then(res => {
+              if (res.message === '1') {
+                setTimeout(() => {
+                  this.$notification.success({
+                    message: '保存成功'
+                  })
+                }, 500)
+              } else {
+                  setTimeout(
+                    this.$notification.error({
+                      message: '保存失败'
+                    }), 500)
+              }
+            }).catch(err => {
+              console.log(err.message)
+            })
         },
         cancel(key) {
             const newData = [...this.data]

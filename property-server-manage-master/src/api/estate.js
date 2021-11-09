@@ -16,10 +16,19 @@ export function insertEstate(param) {
     })
 }
 
-export function insertEstate1() {
-    console.log()
+export function selectBuilding(param) {
     return axios({
-        url: '/estate/insertEstate',
-        method: 'get'
+        url: '/estate/selectBuilding',
+        method: 'post',
+        data: param
+    })
+}
+
+export function updateBuilding(param) {
+    console.log('request param', param)
+    return axios({
+        url: '/estate/updateBuilding',
+        method: 'post',
+        data: param
     })
 }

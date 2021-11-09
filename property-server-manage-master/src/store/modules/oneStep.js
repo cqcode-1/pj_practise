@@ -1,11 +1,13 @@
 const oneStep = {
     state: {
-        buildingNumber: ''
+        buildingNumber: '',
+        estateCode: ''
     },
     mutations: {
         SET_TITLE(state, payload) {
             console.log(payload)
             state.buildingNumber = payload.buildingNumber
+            state.estateCode = payload.estateCode
         }
     },
 

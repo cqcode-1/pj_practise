@@ -1,8 +1,10 @@
 package com.john.spring.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.john.spring.entity.FcBuilding;
 import com.john.spring.entity.FcEstate;
 import com.john.spring.entity.TblCompany;
+import com.john.spring.req.SelectBuilding;
 import com.john.spring.response.ReturnObject;
 import com.john.spring.service.EstateService;
 import com.john.spring.service.base.FcEstateService;
@@ -47,4 +49,21 @@ public class EstateController {
       return JSONObject.toJSONString(returnObject);
    }
 
+   @RequestMapping("/estate/selectBuilding")
+   public String selectBuilding(SelectBuilding building){
+      System.out.println("----"+ building);
+      final List<FcBuilding> fcBuildings = estateService.selectBuildings(building);
+      final ReturnObject<List<FcBuilding>> returnObject = new ReturnObject<>(fcBuildings);
+      returnObject.setMessage(fcBuildings != null && fcBuildings.size() > 0 ? "1" : "0");
+      return JSONObject.toJSONString(returnObject);
+   }
+
+   @RequestMapping("/estate/updateBuilding")
+   public String updateBuilding(FcBuilding building){
+      System.out.println("---"+ building);
+      final Integer result = estateService.updateBuilding(building);
+      final ReturnObject<Integer> returnObject = new ReturnObject<>(result);
+      returnObject.setMessage(result== 1 ? "1": "0");
+      return JSONObject.toJSONString(returnObject);
+   }
 }
