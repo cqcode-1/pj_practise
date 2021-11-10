@@ -3,16 +3,26 @@
     <!-- <a-form-model ref="ruleForm" :model="form2" :label-col="labelCol" :wrapper-col="wrapperCol"> -->
     <a-row class="header">
       楼层数量:
-      <a-input style="width: 30px;padding: 0;text-align: center;"></a-input>开始房号:
+      <a-input style="width: 30px;padding: 0;text-align: center;" v-model="form2.floorNumber" @blur="changFloor"></a-input>开始房号:
       <!-- <a-form-model-item label="单元数量：" prop="region" class="units" :labelCol="labelCol" :wrapperCol="wrapperCol"> -->
-      <a-select v-model="form2.region">
+      <a-select v-model="form2.startCell" @change="changeStartCell">
         <a-select-option value="1">1</a-select-option>
         <a-select-option value="2">2</a-select-option>
+        <a-select-option value="3">3</a-select-option>
+        <a-select-option value="4">4</a-select-option>
+        <a-select-option value="5">5</a-select-option>
+        <a-select-option value="6">6</a-select-option>
+        <a-select-option value="7">7</a-select-option>
       </a-select>结束房号:
       <!-- <a-form-model-item label="单元数量：" prop="region" class="units" :labelCol="labelCol" :wrapperCol="wrapperCol"> -->
-      <a-select v-model="form2.region">
+      <a-select v-model="form2.stopCell" @change="changeStopCell">
         <a-select-option value="1">1</a-select-option>
         <a-select-option value="2">2</a-select-option>
+        <a-select-option value="3">3</a-select-option>
+        <a-select-option value="4">4</a-select-option>
+        <a-select-option value="5">5</a-select-option>
+        <a-select-option value="6">6</a-select-option>
+        <a-select-option value="7">7</a-select-option>
       </a-select>
       <!-- </a-form-model-item> -->
     </a-row>
@@ -20,13 +30,13 @@
       <a-table :columns="columns" :dataSource="data" bordered align="center">
         <template
           v-for="col in [
-            'housecode',
-            'unitcode',
-            'unitname',
-            'startfloor',
-            'endfloor',
-            'startroomnum',
-            'endroomnum',
+            'buildingCode',
+            'unitCode',
+            'unitName',
+            'startFloor',
+            'stopFloor',
+            'startCellId',
+            'stopCellId',
             'remark'
           ]"
           :slot="col"
@@ -64,56 +74,58 @@
 </template>
 
 <script>
+import { selectUnit, updateUnit, updateUnits } from '@/api/estate'
+const QS = require('qs')
 const columns = [
     {
         // 楼宇编码	单元编码	单元名称	开始楼层	结束楼层	开始房号	结束房号
         align: 'center',
         title: '楼宇编码',
-        dataIndex: 'housecode',
+        dataIndex: 'buildingCode',
         width: '6%',
-        scopedSlots: { customRender: 'housecode' }
+        scopedSlots: { customRender: 'buildingCode' }
     },
     {
         align: 'center',
         title: '单元编码',
-        dataIndex: 'unitcode',
+        dataIndex: 'unitCode',
         width: '6%',
-        scopedSlots: { customRender: 'unitcode' }
+        scopedSlots: { customRender: 'unitCode' }
     },
     {
         align: 'center',
         title: '单元名称',
-        dataIndex: 'unitname',
+        dataIndex: 'unitName',
         width: '6%',
-        scopedSlots: { customRender: 'unitname' }
+        scopedSlots: { customRender: 'unitName' }
     },
     {
         align: 'center',
         title: '开始楼层',
-        dataIndex: 'startfloor',
+        dataIndex: 'startFloor',
         width: '7%',
-        scopedSlots: { customRender: 'startfloor' }
+        scopedSlots: { customRender: 'startFloor' }
     },
     {
         align: 'center',
         title: '结束楼层',
-        dataIndex: 'endfloor',
+        dataIndex: 'stopFloor',
         width: '7%',
-        scopedSlots: { customRender: 'endfloor' }
+        scopedSlots: { customRender: 'stopFloor' }
     },
     {
         align: 'center',
         title: '开始房号',
-        dataIndex: 'startroomnum',
+        dataIndex: 'startCellId',
         width: '7%',
-        scopedSlots: { customRender: 'startroomnum' }
+        scopedSlots: { customRender: 'startCellId' }
     },
     {
         align: 'center',
         title: '结束房号',
-        dataIndex: 'endroomnum',
+        dataIndex: 'stopCellId',
         width: '7%',
-        scopedSlots: { customRender: 'endroomnum' }
+        scopedSlots: { customRender: 'stopCellId' }
     },
     {
         align: 'center',
@@ -132,29 +144,18 @@ const columns = [
 ]
 
 const data = []
-for (let i = 0; i < 10; i++) {
-    data.push({
-        key: i.toString(),
-        housecode: `B-${i + 1}`,
-        unitcode: `U-${i + 1}`,
-        unitname: `${i + 1}单元`,
-        startfloor: 1,
-        endfloor: 8,
-        startroomnum: 1,
-        endroomnum: 2,
-        remark: ''
-    })
-}
 export default {
     name: 'Step3',
     data() {
-        this.cacheData = data.map(item => ({ ...item }))
         return {
             labelCol: { span: 2 },
             wrapperCol: { span: 1 },
             form2: {
                 name: '',
                 region: undefined,
+                floorNumber: '',
+                startCell: '',
+                stopCell: '',
                 date1: undefined,
                 delivery: false,
                 type: [],
@@ -166,8 +167,57 @@ export default {
             editingKey: ''
         }
     },
+    created() {
+      selectUnit(this.$store.state.twoStep.unitMessage).then(res => {
+        const units = res.result
+        for (let i = 0; i < units.length; i++) {
+          const unit = units[i]
+          data.push({
+            key: unit.id,
+            buildingCode: unit.buildingCode,
+            unitCode: unit.unitCode,
+            unitName: unit.unitName,
+            startFloor: unit.startFloor,
+            stopFloor: unit.stopFloor,
+            startCellId: unit.startCellId,
+            stopCellId: unit.stopCellId,
+            remark: unit.remark
+          })
+        }
+         this.cacheData = data.map(item => ({ ...item }))
+      })
+    },
     methods: {
         nextStep() {
+            var param = '['
+            for (let i = 0; i < data.length; i++) {
+              var unit = data[i]
+              data[i].id = unit.key
+              if (i === data.length - 1) {
+                param += '{"unitCode":' + unit.unitCode + ',"startFloor:"' + unit.startFloor + ',"stopFloor:"' + unit.stopFloor + ',"startCellId:"' + unit.startCellId + ',"stopCellId:"' + unit.stopCellId + '}]'
+              } else {
+                 param += '{"unitCode":' + unit.unitCode + ',"startFloor:"' + unit.startFloor + ',"stopFloor:"' + unit.stopFloor + ',"startCellId:"' + unit.startCellId + ',"stopCellId:"' + unit.stopCellId + '},'
+              }
+            }
+            this.$store.commit('SET_TITLE3', {
+              units: param
+            })
+            updateUnits(data).then(res => {
+              if (res.message === '1') {
+                setTimeout(() => {
+                  this.$notification.success({
+                    message: '批量保存成功'
+                  })
+                }, 500)
+              } else {
+                  setTimeout(
+                    this.$notification.error({
+                      message: '批量保存失败'
+                    }), 500)
+              }
+            }).catch(err => {
+              console.log(err.message)
+            })
             this.$emit('nextStep')
         },
         prevStep() {
@@ -203,6 +253,13 @@ export default {
                 this.cacheData = newCacheData
                 this.editingKey = ''
             }
+            target.id = key
+            const param = QS.stringify(target)
+            updateUnit(param).then(res => {
+              console.log(res)
+            }).catch(err => {
+              console.log(err.message)
+            })
         },
         cancel(key) {
             const newData = [...this.data]
@@ -213,6 +270,26 @@ export default {
                 delete target.editable
                 this.data = newData
             }
+        },
+        changFloor() {
+          const floorNumber = this.form2.floorNumber
+          for (let i = 0; i < data.length; i++) {
+             data[i].startFloor = 1
+             data[i].stopFloor = floorNumber
+          }
+        },
+        changeStartCell() {
+          const startCel = this.form2.startCell
+          console.log('====', startCel)
+          for (let i = 0; i < data.length; i++) {
+             data[i].startCellId = startCel
+          }
+        },
+        changeStopCell() {
+          const stopCell = this.form2.stopCell
+          for (let i = 0; i < data.length; i++) {
+             data[i].stopCellId = stopCell
+          }
         }
     },
     beforeDestroy() {

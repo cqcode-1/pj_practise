@@ -2,7 +2,7 @@
   <div>
     <!-- <a-form-model ref="ruleForm" :model="form2" :label-col="labelCol" :wrapper-col="wrapperCol"> -->
     <a-row class="header">
-      选择楼宇:
+      选择楼宇: {{ this.$store.state.threeStep.units }}
       <a-select v-model="form2.region">
         <a-select-option value="1">1</a-select-option>
         <a-select-option value="2">2</a-select-option>

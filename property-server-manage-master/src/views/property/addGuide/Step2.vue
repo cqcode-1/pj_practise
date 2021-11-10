@@ -21,7 +21,7 @@
           v-for="col in [
             'buildingCode',
             'buildingName',
-            'unitcount',
+            'unitCount',
             'overRoofDate',
             'finishDate',
             'salePermissionId',
@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { selectBuilding, updateBuilding } from '@/api/estate'
+import { selectBuilding, updateBuilding, updateBuildings } from '@/api/estate'
 const QS = require('qs')
 
 const columns = [
@@ -86,9 +86,9 @@ const columns = [
     {
         align: 'center',
         title: '单元数量',
-        dataIndex: 'unitcount',
+        dataIndex: 'unitCount',
         width: '6%',
-        scopedSlots: { customRender: 'unitcount' }
+        scopedSlots: { customRender: 'unitCount' }
     },
     {
         align: 'center',
@@ -154,7 +154,7 @@ const data = []
 //         key: i.toString(),
 //         buildingCode: `B-${i + 1}`,
 //         buildingName: `第${i + 1}栋`,
-//         unitcount: `12`,
+//         unitCount: `12`,
 //         overRoofDate: moment().format('YYYY-MM-DD'),
 //         finishDate: moment().format('YYYY-MM-DD'),
 //         salePermissionId: '',
@@ -190,7 +190,7 @@ export default {
         }
     },
     created() {
-      // 插入楼宇信息
+      // 向数据库中插入楼宇信息
       const sendData = {
         buildingNumber: this.$store.state.oneStep.buildingNumber,
         estateCode: this.$store.state.oneStep.estateCode
@@ -205,7 +205,7 @@ export default {
               key: building.id,
               buildingCode: building.buildingCode,
               buildingName: building.buildingName,
-              unitcount: building.unitcount,
+              unitCount: building.unitCount,
               overRoofDate: building.overRoofDate,
               finishDate: building.finishDate,
               salePermissionId: building.salePermissionId,
@@ -236,14 +236,35 @@ export default {
         console.log('error')
       })
     },
+
     methods: {
         change() {
           const count = this.form2.region
           for (let i = 0; i < this.data.length; i++) {
-            this.data[i].unitcount = count
+            this.data[i].unitCount = count
           }
         },
         nextStep() {
+            // vuex 传递参数
+            const dataArray = this.data
+            // 拼接json字符串
+            var param = '['
+            for (let i = 0; i < dataArray.length; i++) {
+              const v = dataArray[i]
+              if (i === dataArray.length - 1) {
+                param += '{"buildingCode":"' + v.buildingCode + '", "unitCount" :' + v.unitCount + '}]'
+              } else {
+                param += '{"buildingCode":"' + v.buildingCode + '", "unitCount" :' + v.unitCount + '},'
+              }
+            }
+
+            this.$store.commit('SET_TITLE2', {
+              unitMessage: param
+            })
+            for (let i = 0; i < data.length; i++) {
+              data[i].id = data[i].key
+            }
+            updateBuildings(data)
             this.$emit('nextStep')
         },
         prevStep() {
@@ -279,9 +300,9 @@ export default {
                 Object.assign(targetCache, target)
                 this.cacheData = newCacheData
             }
-            target.id = key
-            target.estateCode = this.$store.state.oneStep.estateCode
-            const param = QS.stringify(target)
+            data.id = key
+            data.estateCode = this.$store.state.oneStep.estateCode
+            const param = QS.stringify(data)
             console.log('param: ', param)
             updateBuilding(param).then(res => {
               if (res.message === '1') {

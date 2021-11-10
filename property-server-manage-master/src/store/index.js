@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 import app from './modules/app'
 import user from './modules/user'
 import oneStep from './modules/oneStep'
+import twoStep from './modules/twoStep'
+import threeStep from './modules/threeStep'
 
 // default router permission control
 import permission from './modules/permission'
@@ -19,7 +21,9 @@ export default new Vuex.Store({
     app,
     user,
     permission,
-    oneStep
+    oneStep,
+    twoStep,
+    threeStep
   },
   state: {
 
