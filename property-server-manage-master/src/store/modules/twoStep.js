@@ -1,11 +1,13 @@
 const twoStep = {
 
     state: {
-        unitMessage: []
+        unitMessage: [],
+        estateCode: ''
     },
     mutations: {
         SET_TITLE2(state, payload) {
             state.unitMessage = payload.unitMessage
+            state.estateCode = payload.estateCode
             console.log('twoStep', state.unitMessage)
         }
     },

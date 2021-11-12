@@ -259,7 +259,8 @@ export default {
             }
 
             this.$store.commit('SET_TITLE2', {
-              unitMessage: param
+              unitMessage: param,
+              estateCode: this.$store.state.oneStep.estateCode
             })
             for (let i = 0; i < data.length; i++) {
               data[i].id = data[i].key

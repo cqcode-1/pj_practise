@@ -140,7 +140,7 @@ export default {
             labelCol: { lg: { span: 6 }, sm: { span: 4 } },
             wrapperCol: { lg: { span: 16 }, sm: { span: 20 } },
             form: {
-                company: [],
+                company: '',
                 estateCode: '',
                 estateName: '',
                 coverArea: '',

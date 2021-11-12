@@ -2,9 +2,11 @@ package com.john.spring.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.john.spring.entity.FcBuilding;
+import com.john.spring.entity.FcCell;
 import com.john.spring.entity.FcEstate;
 import com.john.spring.entity.FcUnit;
 import com.john.spring.entity.TblCompany;
+import com.john.spring.req.CellMessage;
 import com.john.spring.req.SelectBuilding;
 import com.john.spring.req.UnitMessage;
 import com.john.spring.response.ReturnObject;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -100,10 +103,47 @@ public class EstateController {
 
    @RequestMapping("/estate/updateUnits")
    public String selectUnit(@RequestBody List<FcUnit> units){
-      System.out.println("updateUnit---"+ units);
+      System.out.println("updateUnits---"+ units);
       final Integer result = estateService.updateUnits(units);
       final ReturnObject<Object> returnObject = new ReturnObject<>();
       returnObject.setMessage(result ==1  ? "1": "0");
+      return JSONObject.toJSONString(returnObject);
+   }
+
+   @RequestMapping("/estate/insertCell")
+   public String insertCell(@RequestBody List<CellMessage> cellMessages){
+      System.out.println("insertCell---"+ cellMessages);
+      final ArrayList<FcCell> fcCells = estateService.insertCell(cellMessages);
+      final ReturnObject<List<FcCell>> returnObject = new ReturnObject<>(fcCells);
+      returnObject.setMessage(fcCells.size() >1  ? "1": "0");
+      return JSONObject.toJSONString(returnObject);
+   }
+
+   @RequestMapping("/estate/selectBuildingsByEstateCode")
+   public String selectBuildingsByEstateCode(@RequestParam String estateCode){
+      System.out.println("selectBuildingsByEstateCode---"+ estateCode);
+      final List<FcBuilding> fcBuildings = estateService.selectBuildingsByEstateCode(estateCode);
+      final ReturnObject<List<FcBuilding>> returnObject = new ReturnObject<>(fcBuildings);
+      returnObject.setMessage(fcBuildings.size() >1  ? "1": "0");
+      return JSONObject.toJSONString(returnObject);
+   }
+
+   @RequestMapping("/estate/selectUnitsByBuildingCode")
+   public String selectUnitsByBuildingCode(@RequestParam String buildingCode){
+      System.out.println("selectUnitsByBuildingCode---"+ buildingCode);
+      final List<FcUnit> fcBuildings = estateService.selectUnitsByBuildingCode(buildingCode);
+      final ReturnObject<List<FcUnit>> returnObject = new ReturnObject<>(fcBuildings);
+      returnObject.setMessage(fcBuildings.size() >1  ? "1": "0");
+      return JSONObject.toJSONString(returnObject);
+   }
+
+   @RequestMapping("/estate/selectCellsByUnitCode")
+   public String selectCellsByUnitCode(@RequestParam String unitCode){
+      System.out.println("selectCellsByUnitCode---"+ unitCode);
+      final List<FcCell> fcCells = estateService.selectCellsByUnitCode(unitCode);
+      final ReturnObject<List<FcCell>> returnObject = new ReturnObject<>(fcCells);
+      returnObject.setMessage(fcCells.size() >1  ? "1": "0");
+      System.out.println("------------: cells: "+ fcCells.size());
       return JSONObject.toJSONString(returnObject);
    }
 }

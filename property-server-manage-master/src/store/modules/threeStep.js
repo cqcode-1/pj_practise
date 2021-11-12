@@ -1,12 +1,14 @@
 const threeStep = {
 
     state: {
-        units: []
+        cellMessage: [],
+        estateCode: ''
     },
     mutations: {
         SET_TITLE3(state, payload) {
-            state.units = payload.units
-            console.log('threeStep', state.units)
+            state.cellMessage = payload.cellMessage
+            state.estateCode = payload.estateCode
+            console.log('threeStep', state.cellMessage)
         }
     },
     actions: {

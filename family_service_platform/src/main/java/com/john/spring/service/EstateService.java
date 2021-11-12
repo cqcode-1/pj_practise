@@ -3,13 +3,16 @@ package com.john.spring.service;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.john.spring.dao.FcBuildingMapper;
+import com.john.spring.dao.FcCellMapper;
 import com.john.spring.dao.FcEstateMapper;
 import com.john.spring.dao.FcUnitMapper;
 import com.john.spring.dao.TblCompanyMapper;
 import com.john.spring.entity.FcBuilding;
+import com.john.spring.entity.FcCell;
 import com.john.spring.entity.FcEstate;
 import com.john.spring.entity.FcUnit;
 import com.john.spring.entity.TblCompany;
+import com.john.spring.req.CellMessage;
 import com.john.spring.req.SelectBuilding;
 import com.john.spring.req.UnitMessage;
 
@@ -35,6 +38,9 @@ public class EstateService {
 
    @Autowired
    private FcUnitMapper fcUnitMapper;
+
+   @Autowired
+   private FcCellMapper fcCellMapper;
 
    public List<TblCompany> queryCompany(){
       return tblCompanyMapper.queryCompany();
@@ -63,7 +69,7 @@ public class EstateService {
       for (int i = 0; i < buildNumber; i++) {
          final FcBuilding fcBuilding = new FcBuilding();
          fcBuilding.setEstateCode(selectBuilding.getEstateCode());
-         fcBuilding.setBuildingCode("B-"+(i+1));
+         fcBuilding.setBuildingCode(selectBuilding.getEstateCode()+"B"+(i+1));
          fcBuilding.setBuildingName("第"+(i+1)+"栋");
          result.add(fcBuilding);
          fcBuildingMapper.insert(fcBuilding);
@@ -89,7 +95,7 @@ public class EstateService {
          for (int i = 0; i < unitMessage.getUnitCount(); i++) {
             final FcUnit fcUnit = new FcUnit();
             fcUnit.setBuildingCode(unitMessage.getBuildingCode());
-            fcUnit.setUnitCode("U-"+(i+1));
+            fcUnit.setUnitCode(unitMessage.getBuildingCode()+"U"+(i+1));
             fcUnit.setUnitName("第"+(i+1)+"单元");
             fcUnits.add(fcUnit);
             fcUnitMapper.insert(fcUnit);
@@ -107,6 +113,44 @@ public class EstateService {
       for (FcUnit fcUnit: units) {
          i += fcUnitMapper.updateById(fcUnit);
       }
-      return i == units.size()-1? 1: 0;
+      return i == units.size()? 1: 0;
+   }
+
+   public ArrayList<FcCell> insertCell(List<CellMessage> cellMessages) {
+      final ArrayList<FcCell> fcCells = new ArrayList<>();
+      for (CellMessage cellMessage : cellMessages) {
+         for (int i = cellMessage.getStartFloor(); i <= cellMessage.getStopFloor(); i++) {
+            for (int j = cellMessage.getStartCellId(); j < cellMessage.getStopCellId(); j++) {
+               final FcCell fcCell = new FcCell();
+               fcCell.setUnitCode(cellMessage.getUnitCode());
+               fcCell.setCellCode(i+""+j);
+               fcCell.setFloorNumber(i);
+               fcCell.setCellName(i+"-"+j);
+               fcCells.add(fcCell);
+               fcCellMapper.insert(fcCell);
+            }
+         }
+      }
+      return fcCells;
+   }
+
+   public List<FcBuilding> selectBuildingsByEstateCode(String estateCode) {
+      final QueryWrapper<FcBuilding> queryWrapper = new QueryWrapper<>();
+      queryWrapper.eq("estate_code", estateCode);
+      queryWrapper.select("building_code", "building_name");
+      return fcBuildingMapper.selectList(queryWrapper);
+   }
+
+   public List<FcUnit> selectUnitsByBuildingCode(String buildingCode) {
+      final QueryWrapper<FcUnit> queryWrapper = new QueryWrapper<>();
+      queryWrapper.eq("building_code", buildingCode);
+      queryWrapper.select("unit_code", "unit_name");
+      return fcUnitMapper.selectList(queryWrapper);
+   }
+   public List<FcCell> selectCellsByUnitCode(String estateCode) {
+      final QueryWrapper<FcCell> queryWrapper = new QueryWrapper<>();
+      queryWrapper.eq("unit_code", estateCode);
+      queryWrapper.select("floor_number","cell_code", "cell_name");
+      return fcCellMapper.selectList(queryWrapper);
    }
 }

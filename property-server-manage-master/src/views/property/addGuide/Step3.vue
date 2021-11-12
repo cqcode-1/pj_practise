@@ -194,13 +194,14 @@ export default {
               var unit = data[i]
               data[i].id = unit.key
               if (i === data.length - 1) {
-                param += '{"unitCode":' + unit.unitCode + ',"startFloor:"' + unit.startFloor + ',"stopFloor:"' + unit.stopFloor + ',"startCellId:"' + unit.startCellId + ',"stopCellId:"' + unit.stopCellId + '}]'
+                param += '{"unitCode":"' + unit.unitCode + '","startFloor":' + unit.startFloor + ',"stopFloor":' + unit.stopFloor + ',"startCellId":' + unit.startCellId + ',"stopCellId":' + unit.stopCellId + '}]'
               } else {
-                 param += '{"unitCode":' + unit.unitCode + ',"startFloor:"' + unit.startFloor + ',"stopFloor:"' + unit.stopFloor + ',"startCellId:"' + unit.startCellId + ',"stopCellId:"' + unit.stopCellId + '},'
+                 param += '{"unitCode":"' + unit.unitCode + '","startFloor":' + unit.startFloor + ',"stopFloor":' + unit.stopFloor + ',"startCellId":' + unit.startCellId + ',"stopCellId":' + unit.stopCellId + '},'
               }
             }
             this.$store.commit('SET_TITLE3', {
-              units: param
+              cellMessage: param,
+              estateCode: this.$store.state.twoStep.estateCode
             })
             updateUnits(data).then(res => {
               if (res.message === '1') {
@@ -255,11 +256,19 @@ export default {
             }
             target.id = key
             const param = QS.stringify(target)
-            updateUnit(param).then(res => {
-              console.log(res)
-            }).catch(err => {
-              console.log(err.message)
-            })
+            if (target.startFloor > target.stopFloor) {
+              setTimeout(
+                this.$notification.error({
+                   message: '开始楼层数不能大于结束楼层数'
+                })
+              , 1000)
+            } else {
+              updateUnit(param).then(res => {
+                console.log(res)
+              }).catch(err => {
+                console.log(err.message)
+              })
+            }
         },
         cancel(key) {
             const newData = [...this.data]

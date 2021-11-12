@@ -69,3 +69,38 @@ export function updateUnits(param) {
         data: param
     })
 }
+
+export function insertCell(param) {
+    return axios({
+        url: '/estate/insertCell',
+        method: 'post',
+        data: param,
+        headers: {
+            'Content-Type': 'application/json;charset=UTF8'
+        }
+    })
+}
+
+export function selectBuildingsByEstateCode(param) {
+    return axios({
+        url: '/estate/selectBuildingsByEstateCode',
+        method: 'post',
+        data: param
+    })
+}
+
+export function selectUnitsByBuildingCode(param) {
+    return axios({
+        url: '/estate/selectUnitsByBuildingCode',
+        method: 'post',
+        data: param
+    })
+}
+
+export function selectCellsByUnitCode(param) {
+    return axios({
+        url: '/estate/selectCellsByUnitCode',
+        method: 'post',
+        data: param
+    })
+}
